@@ -1,5 +1,5 @@
 <p align="left">
-<b>DOVE</b>: Automatic construction of genome and chromosomal databases for metagenomics</p>
+<b>Automatic construction of genome and chromosomal databases for metagenomics</b></p>
 
 ## Install
 ```
