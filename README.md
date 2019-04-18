@@ -3,8 +3,8 @@
 
 ## Install
 ```
-git clone https://github.com/pratas/dove.git
-cd dove/
+git clone https://github.com/pratas/db.git
+cd db/
 chmod +x BuildDB.sh
 ```
 
