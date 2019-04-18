@@ -16,7 +16,12 @@
 #   => IDB.fa.gz  (INVERTEBRATE)
 #   => VMDB.fa.gz (VERTEBRATE MAMMALIAN)
 #   => VODB.fa.gz (VERTEBRATE OTHER)
-#   
+# 
+# ==============================================================================
+# NUMBER OF THREADS USED FOR DOWNLOAD
+#
+THREADS=8;
+#
 # ==============================================================================
 # ONLY FLAGS WITH '1' WILL BE PROCESSED 
 #
@@ -40,7 +45,7 @@ if [[ "$BUILD_VIRAL" -eq "1" ]];
   awk -F '\t' '{if($12=="Complete Genome"||$12=="Chromosome") print $20}' assembly_summary.txt > ASCG.txt
   mkdir -p GB_DB_VIRAL/
   rm -f GB_DB_VIRAL/*.fa.gz
-  cat ASCG.txt | xargs -I{} -n1 -P8 wget -P GB_DB_VIRAL {}/*_genomic.fna.gz
+  cat ASCG.txt | xargs -I{} -n1 -P$THREADS wget -P GB_DB_VIRAL {}/*_genomic.fna.gz
   mkdir -p GB_DB_VIRAL_CDS/
   mkdir -p GB_DB_VIRAL_RNA/
   rm -f GB_DB_VIRAL_CDS/*.fa.gz
@@ -61,7 +66,7 @@ if [[ "$BUILD_BACTERIA" -eq "1" ]];
   awk -F '\t' '{if($12=="Complete Genome"||$12=="Chromosome") print $20}' assembly_summary.txt > ASCG.txt
   mkdir -p GB_DB_BACTERIA/
   rm -f GB_DB_BACTERIA/*.fa.gz
-  cat ASCG.txt | xargs -I{} -n1 -P8 wget -P GB_DB_BACTERIA {}/*_genomic.fna.gz
+  cat ASCG.txt | xargs -I{} -n1 -P$THREADS wget -P GB_DB_BACTERIA {}/*_genomic.fna.gz
   mkdir -p GB_DB_BACTERIA_CDS/
   mkdir -p GB_DB_BACTERIA_RNA/
   rm -f GB_DB_BACTERIA_CDS/*.fa.gz
@@ -82,7 +87,7 @@ if [[ "$BUILD_ARCHAEA" -eq "1" ]];
   awk -F '\t' '{if($12=="Complete Genome"||$12=="Chromosome") print $20}' assembly_summary.txt > ASCG.txt
   mkdir -p GB_DB_ARCHAEA/
   rm -f GB_DB_ARCHAEA/*.fa.gz
-  cat ASCG.txt | xargs -I{} -n1 -P8 wget -P GB_DB_ARCHAEA {}/*_genomic.fna.gz
+  cat ASCG.txt | xargs -I{} -n1 -P$THREADS wget -P GB_DB_ARCHAEA {}/*_genomic.fna.gz
   mkdir -p GB_DB_ARCHAEA_CDS/
   mkdir -p GB_DB_ARCHAEA_RNA/
   rm -f GB_DB_ARCHAEA_CDS/*.fa.gz
@@ -103,7 +108,7 @@ if [[ "$BUILD_PROTOZOA" -eq "1" ]];
   awk -F '\t' '{if($12=="Complete Genome"||$12=="Chromosome") print $20}' assembly_summary.txt > ASCG.txt
   mkdir -p GB_DB_PROTOZOA/
   rm -f GB_DB_PROTOZOA/*.fa.gz
-  cat ASCG.txt | xargs -I{} -n1 -P8 wget -P GB_DB_PROTOZOA {}/*_genomic.fna.gz
+  cat ASCG.txt | xargs -I{} -n1 -P$THREADS wget -P GB_DB_PROTOZOA {}/*_genomic.fna.gz
   mkdir -p GB_DB_PROTOZOA_CDS/
   mkdir -p GB_DB_PROTOZOA_RNA/
   rm -f GB_DB_PROTOZOA_CDS/*.fa.gz
@@ -124,7 +129,7 @@ if [[ "$BUILD_FUNGI" -eq "1" ]];
   awk -F '\t' '{if($12=="Complete Genome"||$12=="Chromosome") print $20}' assembly_summary.txt > ASCG.txt
   mkdir -p GB_DB_FUNGI/
   rm -f GB_DB_FUNGI/*.fa.gz
-  cat ASCG.txt | xargs -I{} -n1 -P8 wget -P GB_DB_FUNGI {}/*_genomic.fna.gz
+  cat ASCG.txt | xargs -I{} -n1 -P$THREADS wget -P GB_DB_FUNGI {}/*_genomic.fna.gz
   mkdir -p GB_DB_FUNGI_CDS/
   mkdir -p GB_DB_FUNGI_RNA/
   rm -f GB_DB_FUNGI_CDS/*.fa.gz
@@ -145,7 +150,7 @@ if [[ "$BUILD_PLANT" -eq "1" ]];
   awk -F '\t' '{if($12=="Complete Genome"||$12=="Chromosome") print $20}' assembly_summary.txt > ASCG.txt
   mkdir -p GB_DB_PLANT/
   rm -f GB_DB_PLANT/*.fa.gz
-  cat ASCG.txt | xargs -I{} -n1 -P8 wget -P GB_DB_PLANT {}/*_genomic.fna.gz
+  cat ASCG.txt | xargs -I{} -n1 -P$THREADS wget -P GB_DB_PLANT {}/*_genomic.fna.gz
   mkdir -p GB_DB_PLANT_CDS/
   mkdir -p GB_DB_PLANT_RNA/
   rm -f GB_DB_PLANT_CDS/*.fa.gz
@@ -166,7 +171,7 @@ if [[ "$BUILD_INVER" -eq "1" ]];
   awk -F '\t' '{if($12=="Complete Genome"||$12=="Chromosome") print $20}' assembly_summary.txt > ASCG.txt
   mkdir -p GB_DB_INVER/
   rm -f GB_DB_INVER/*.fa.gz
-  cat ASCG.txt | xargs -I{} -n1 -P8 wget -P GB_DB_INVER {}/*_genomic.fna.gz
+  cat ASCG.txt | xargs -I{} -n1 -P$THREADS wget -P GB_DB_INVER {}/*_genomic.fna.gz
   mkdir -p GB_DB_INVER_CDS/
   mkdir -p GB_DB_INVER_RNA/
   rm -f GB_DB_INVER_CDS/*.fa.gz
@@ -187,7 +192,7 @@ if [[ "$BUILD_VER_MAM" -eq "1" ]];
   awk -F '\t' '{if($12=="Complete Genome"||$12=="Chromosome") print $20}' assembly_summary.txt > ASCG.txt
   mkdir -p GB_DB_VER_MAM/
   rm -f GB_DB_VER_MAM/*.fa.gz
-  cat ASCG.txt | xargs -I{} -n1 -P8 wget -P GB_DB_VER_MAM {}/*_genomic.fna.gz
+  cat ASCG.txt | xargs -I{} -n1 -P$THREADS wget -P GB_DB_VER_MAM {}/*_genomic.fna.gz
   mkdir -p GB_DB_VER_MAM_CDS/
   mkdir -p GB_DB_VER_MAM_RNA/
   rm -f GB_DB_VER_MAM_CDS/*.fa.gz
@@ -208,7 +213,7 @@ if [[ "$BUILD_VER_OTH" -eq "1" ]];
   awk -F '\t' '{if($12=="Complete Genome"||$12=="Chromosome") print $20}' assembly_summary.txt > ASCG.txt
   mkdir -p GB_DB_VER_OTH/
   rm -f GB_DB_VER_OTH/*.fa.gz
-  cat ASCG.txt | xargs -I{} -n1 -P8 wget -P GB_DB_VER_OTH {}/*_genomic.fna.gz
+  cat ASCG.txt | xargs -I{} -n1 -P$THREADS wget -P GB_DB_VER_OTH {}/*_genomic.fna.gz
   mkdir -p GB_DB_VER_OTH_CDS/
   mkdir -p GB_DB_VER_OTH_RNA/
   rm -f GB_DB_VER_OTH_CDS/*.fa.gz
