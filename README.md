@@ -5,12 +5,12 @@
 ```
 git clone https://github.com/pratas/db.git
 cd db/
-chmod +x BuildDB.sh
+chmod +x Build.sh
 ```
 
 ## Run
 ```
-./BuildDB.sh
+./Build.sh
 ```
 
 ## License
